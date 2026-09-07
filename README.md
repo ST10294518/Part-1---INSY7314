@@ -1,4 +1,4 @@
-# HustleHub+ — Secure Backend Foundations (Part 1)
+# HustleHub+ : Secure Backend Foundations (Part 1)
 
 HustleHub+ is a secure freelance marketplace platform being built incrementally across three POE stages. **This submission covers Part 1 only**: the secure backend foundation supporting user registration and authentication.
 
