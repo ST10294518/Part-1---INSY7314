@@ -2,6 +2,10 @@
 
 HustleHub+ is a secure freelance marketplace platform being built incrementally across three POE stages. **This submission covers Part 1 only**: the secure backend foundation supporting user registration and authentication.
 
+## Demonstration Video
+
+LINK: https://youtu.be/7Gcj34gJVoY 
+
 ## 1. System Overview
 
 HustleHub+ will eventually let **freelancers** advertise services, **clients** browse and book them, and the platform will track resulting income and estimated tax for freelancers. Security is treated as a core requirement throughout, not an add-on.
@@ -127,7 +131,3 @@ API testing was performed using **Postman**. The collection (`/Postman Collectio
 - Unknown endpoint (404) handling
 
 Evidence of these test runs is included in `/Evidence/Testing - Postman.pdf`.
-
-## 7. Demonstration Video
-
-`[ADD LINK: demonstration video showing the API running, registration, and login with token generation]`
