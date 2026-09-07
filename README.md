@@ -88,7 +88,7 @@ npm run dev     # nodemon, auto-restart
 npm start
 ```
 
-The API will be available at `https://localhost:5443` (your browser/Postman will warn about the self-signed cert — this is expected in a local dev environment).
+The API will be available at `https://localhost:5443` (your browser/Postman will warn about the self-signed cert - this is expected in a local dev environment).
 
 ## 4. API Endpoints
 
