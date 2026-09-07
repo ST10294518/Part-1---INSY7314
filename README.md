@@ -13,7 +13,7 @@ HustleHub+ will eventually let **freelancers** advertise services, **clients** b
 
 **Part 1 scope:** only the authentication layer — registration, login, and JWT-protected routes. Marketplace features (gigs, bookings, transactions, tax) are out of scope until Part 2/3.
 
-## 3. Project Structure
+## 2. Project Structure
 
 ```
 src/
@@ -33,7 +33,7 @@ src/
     └── generateToken.js    # JWT signing helper
 ```
 
-## 4. Getting Started
+## 3. Getting Started
 
 ### Prerequisites
 - Node.js (v18+ recommended)
@@ -86,7 +86,7 @@ npm start
 
 The API will be available at `https://localhost:5443` (your browser/Postman will warn about the self-signed cert — this is expected in a local dev environment).
 
-## 5. API Endpoints
+## 4. API Endpoints
 
 | Method | Endpoint             | Auth required | Description                          |
 |--------|-----------------------|----------------|--------------------------------------|
@@ -94,7 +94,7 @@ The API will be available at `https://localhost:5443` (your browser/Postman will
 | POST   | `/api/auth/login`     | No             | Authenticate and receive a JWT       |
 | GET    | `/api/auth/me`        | Yes (Bearer)   | Return the authenticated user's profile |
 
-## 6. Security Decisions
+## 5. Security Decisions
 
 **Password hashing (bcrypt)**
 Passwords are never stored or logged in plain text. On registration, the password is hashed using `bcrypt` with a configurable cost factor (`BCRYPT_SALT_ROUNDS`, default 12). On login, the submitted password is compared against the stored hash using `bcrypt.compare`, so the plain-text password is never persisted or re-derivable.
@@ -111,7 +111,7 @@ The API only runs over HTTPS, using a locally generated SSL certificate loaded i
 **Safe error handling**
 A centralised error handler ensures no internal details — stack traces, file paths, or environment values — are ever returned to the client. Unexpected errors return a generic `500` message while being logged server-side for debugging; malformed JSON bodies are caught and return a clean `400`.
 
-## 7. Testing
+## 6. Testing
 
 API testing was performed using **Postman**. The collection (`/Postman Collection/HustleHub-Part1-API-Tests.postman_collection.json`) includes 14 requests covering both expected and edge-case behaviour:
 
@@ -128,6 +128,6 @@ API testing was performed using **Postman**. The collection (`/Postman Collectio
 
 Evidence of these test runs is included in `/Evidence/Testing - Postman.pdf`.
 
-## 8. Demonstration Video
+## 7. Demonstration Video
 
 `[ADD LINK: demonstration video showing the API running, registration, and login with token generation]`
