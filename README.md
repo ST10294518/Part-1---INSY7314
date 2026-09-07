@@ -15,7 +15,7 @@ HustleHub+ will eventually let **freelancers** advertise services, **clients** b
 - **Freelancers** - list gigs, manage bookings, track income/tax
 - **Admins** - platform oversight (later parts)
 
-**Part 1 scope:** only the authentication layer — registration, login, and JWT-protected routes. Marketplace features (gigs, bookings, transactions, tax) are out of scope until Part 2/3.
+**Part 1 scope:** only the authentication layer - registration, login, and JWT-protected routes. Marketplace features (gigs, bookings, transactions, tax) are out of scope until Part 2/3.
 
 ## 2. Project Structure
 
