@@ -13,52 +13,6 @@ HustleHub+ will eventually let **freelancers** advertise services, **clients** b
 
 **Part 1 scope:** only the authentication layer — registration, login, and JWT-protected routes. Marketplace features (gigs, bookings, transactions, tax) are out of scope until Part 2/3.
 
-## 2. Architecture
-
-The system follows the MERN stack. In Part 1, only the **Express API** and a temporary **file-based store** exist; MongoDB and the React client are introduced in later parts.
-
-```mermaid
-graph TD
-    subgraph Client_Layer["Client Layer (Part 2+)"]
-        C[React Frontend / Postman]
-    end
-
-    subgraph Security_Boundary["HTTPS Boundary (TLS via local SSL cert)"]
-        subgraph API["Express API - src/app.js"]
-            R[Routes<br/>authRoutes.js]
-            V[Validation Middleware<br/>express-validator]
-            A[Auth Middleware<br/>JWT verify - protect]
-            CT[Controllers<br/>authController.js]
-            EH[Error Handler<br/>errorHandler.js]
-        end
-        subgraph Data["Data Layer (Part 1: file-based)"]
-            US[userStore.js]
-            F[(data/users.json)]
-        end
-    end
-
-    subgraph Future["Planned for Part 2+"]
-        DB[(MongoDB)]
-    end
-
-    C -- "HTTPS request" --> R
-    R --> V
-    V -- "valid" --> CT
-    V -- "invalid" --> EH
-    R -- "protected routes" --> A
-    A -- "valid token" --> CT
-    A -- "invalid/missing token" --> EH
-    CT -- "bcrypt hash / compare" --> US
-    US --> F
-    CT -.->|"replaces in Part 2"| DB
-```
-
-**Key boundaries:**
-- All traffic is served over **HTTPS only** — the server refuses to start without a valid local certificate.
-- Passwords never leave the boundary in plain text; only bcrypt hashes are stored.
-- Protected routes sit behind the JWT `protect` middleware and reject any request without a valid token.
-- Validation happens before any request reaches business logic (controllers).
-
 ## 3. Project Structure
 
 ```
@@ -174,16 +128,6 @@ API testing was performed using **Postman**. The collection (`/Postman Collectio
 
 Evidence of these test runs is included in `/Evidence/Testing - Postman.pdf`.
 
-### Screenshots
-
-`[ADD SCREENSHOT: successful registration response]`
-`[ADD SCREENSHOT: successful login response with JWT]`
-`[ADD SCREENSHOT: protected route access with valid token]`
-
 ## 8. Demonstration Video
 
 `[ADD LINK: demonstration video showing the API running, registration, and login with token generation]`
-
-## 9. Next Steps (Part 2 preview)
-
-Part 1 intentionally scopes out marketplace and database functionality. Part 2 will introduce: MongoDB persistence, a React frontend, gig management, bookings and transactions, role-based access control, rate limiting, and security headers/CSP.
